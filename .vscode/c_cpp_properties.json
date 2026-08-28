@@ -1,0 +1,17 @@
+{
+    // Apple clang には bits/stdc++.h が無いので、Homebrew GCC 15 を見に行かせる。
+    // これで #include <bits/stdc++.h> の赤波線が消え、補完も libstdc++ のものになる。
+    "version": 4,
+    "configurations": [
+        {
+            "name": "Mac (Homebrew GCC 15)",
+            "compilerPath": "/opt/homebrew/bin/g++-15",
+            "intelliSenseMode": "macos-gcc-arm64",
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ]
+        }
+    ]
+}

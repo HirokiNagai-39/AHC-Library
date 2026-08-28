@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Build artifacts
+a.out
+*.o
+*.dSYM/
+typical/polyomino/demo
+
+# Claude Code local settings
+.claude/settings.local.json

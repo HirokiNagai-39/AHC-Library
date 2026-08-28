@@ -1,0 +1,38 @@
+[general]
+version = "0.3.1"
+
+[problem]
+problem_name = "hill_climbing"
+objective = "Min"                     # ★ "Min" / "Max" (main.cpp の MAXIMIZE と合わせる)
+# a.out が stderr に出す "Score = 12345" を拾う。
+# ビジュアライザで採点する場合は AHC ごとの設定に書き換えること。
+score_regex = '(?m)^\s*Score\s*=\s*(?P<score>\d+)\s*$'
+
+[test]
+start_seed = 0
+end_seed = 20                         # [start_seed, end_seed) のテストケースを回す
+threads = 0                           # 0 = 論理コア数
+out_dir = "./pahcer"
+
+# ==============================
+#         COMPILE STEPS
+# ==============================
+[[test.compile_steps]]
+program = "g++"
+args = ["-std=c++20", "-O2", "-o", "a.out", "main.cpp"]
+
+# ==============================
+#           TEST STEPS
+# ==============================
+[[test.test_steps]]
+program = "./a.out"
+args = []
+stdin = "../tools/in/{SEED04}.txt"
+stdout = "../tools/out/{SEED04}.txt"
+measure_time = true
+# ※ stderr は score_regex で読ませるためリダイレクトしない。
+#    ビジュアライザで採点する場合は下のように 2 ステップ目を足す:
+# [[test.test_steps]]
+# program = "./vis"
+# args = ["../tools/in/{SEED04}.txt", "../tools/out/{SEED04}.txt"]
+# measure_time = false

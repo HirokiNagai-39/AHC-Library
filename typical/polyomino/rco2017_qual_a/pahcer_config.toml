@@ -1,0 +1,31 @@
+[general]
+version = "0.3.1"
+
+[problem]
+problem_name = "rco2017_qual_a"
+objective = "Max"
+# a.out が stderr に出す "Score = 12345" を拾う (合計 / 10000 の切り上げ = 提出時の得点)
+score_regex = '(?m)^\s*Score\s*=\s*(?P<score>\d+)\s*$'
+
+[test]
+start_seed = 0
+end_seed = 10                         # [start_seed, end_seed) のテストケースを回す
+threads = 0                           # 0 = 論理コア数
+out_dir = "./pahcer"
+
+# ==============================
+#         COMPILE STEPS
+# ==============================
+[[test.compile_steps]]
+program = "g++"
+args = ["-std=c++20", "-O2", "-o", "a.out", "main.cpp"]
+
+# ==============================
+#           TEST STEPS
+# ==============================
+[[test.test_steps]]
+program = "./a.out"
+args = []
+stdin = "./tools/in/{SEED04}.txt"
+stdout = "./tools/out/{SEED04}.txt"
+measure_time = true
