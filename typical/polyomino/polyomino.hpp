@@ -1,3 +1,4 @@
+// https://github.com/HirokiNagai-39/AHC-Library
 #pragma once
 // =====================================================================================
 //  ポリオミノ生成ライブラリ  (AHC Library / typical)
