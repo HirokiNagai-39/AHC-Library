@@ -7,5 +7,9 @@ a.out
 *.dSYM/
 typical/polyomino/demo
 
+# AHC 公式ツールのビルド成果物
+tools/target/
+vis
+
 # Claude Code local settings
 .claude/settings.local.json
